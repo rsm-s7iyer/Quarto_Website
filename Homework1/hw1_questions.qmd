@@ -671,19 +671,12 @@ As a reminder of how the **t-statistic** works, this section uses simulation to 
 - The **Law of Large Numbers (LLN)**  
 - The **Central Limit Theorem (CLT)**
 
-Suppose the true distribution of respondents **who do not receive a charitable donation match** is modeled as a **Bernoulli distribution** with probability:
-
-\[
-p = 0.018
-\]
+Suppose the true distribution of respondents **who do not receive a charitable donation match** is modeled as a **Bernoulli distribution** with probability: p = 0.018
 
 This means 1.8% of people in the control group are expected to donate.
 
 Further, suppose that the distribution of respondents **who do receive a charitable donation match of any size** is also Bernoulli, with:
-
-\[
 p = 0.022
-\]
 
 This reflects a 2.2% donation probability in the treatment group. These values reflect the observed response rates in the experiment.
 
