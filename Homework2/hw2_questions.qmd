@@ -6,6 +6,7 @@ callout-appearance: minimal # this hides the blue "i" icon on .callout-notes
 format:
   html:
     code-fold: true
+    toc-depth: 2
     fig-align: center
 ---
 
@@ -39,7 +40,7 @@ df_blueprinty.head()
 ::::
 
 
-_todo: Compare histograms and means of number of patents by customer status. What do you observe?_
+<!-- _todo: Compare histograms and means of number of patents by customer status. What do you observe?_ -->
 
 ### Comparison of Patents by Customer Status
 
@@ -66,7 +67,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-##### Means of Number of Patents by Customer Status 
+### Means of Number of Patents by Customer Status 
 
 :::: {.callout-note collapse="true"}
 
@@ -79,9 +80,9 @@ df_blueprinty.groupby("iscustomer")["patents"].mean().rename({0: "Non-customer",
 ```
 ::::
 
-We observe that **customers of Blueprinty tend to have a higher average number of patents** compared to non-customers. The histogram shows a greater concentration of higher patent counts among customers. However, this is a **descriptive comparison** — it does not yet account for other variables like firm age or region.
+We observe that **customers of Blueprinty tend to have a higher average number of patents** compared to non-customers. The histogram shows a greater concentration of higher patent counts among customers. However, this is a descriptive comparison** — it does not yet account for other variables like firm age or region.
 
-In the next step, we will model the number of patents more formally using **Poisson regression**, both via MLE and built-in methods.
+In the next step, we will model the number of patents more formally using Poisson regression, both via MLE and built-in methods.
 
 Blueprinty customers are not selected at random. It may be important to account for systematic differences in the age and regional location of customers vs non-customers.
 
@@ -113,9 +114,9 @@ plt.show()
 ```
 The **first figure** shows the distribution of firms by region, split between Blueprinty customers and non-customers. We observe that:
 
-- The **Northeast** region has a substantially higher share of Blueprinty customers than other regions.
-- In contrast, regions like the **Midwest**, **Southwest**, and **Northwest** are dominated by non-customers.
-- This suggests that Blueprinty's customer base is **not randomly distributed** geographically and region may be associated with software adoption.
+- The Northeast region has a substantially higher share of Blueprinty customers than other regions.
+- In contrast, regions like the Midwest, Southwest, and Northwest are dominated by non-customers.
+- This suggests that Blueprinty's customer base is not randomly distributed geographically and region may be associated with software adoption.
 
 ### Firm Age by Customer Status
 
@@ -152,7 +153,7 @@ plt.show()
 ```
 
 - Both groups have similar median ages, around 25–27 years.
-- The spread and interquartile range are also comparable, suggesting **no substantial difference** in age distribution between the two groups.
+- The spread and interquartile range are also comparable, suggesting no substantial difference in age distribution between the two groups.
 - This implies that any difference in patent output is **unlikely to be driven by firm age alone** and supports the need to control for age in the Poisson regression model.
 
 
@@ -168,17 +169,17 @@ df_blueprinty.groupby("iscustomer")["region"].value_counts(normalize=True).unsta
 df_blueprinty.groupby("iscustomer")["age"].mean().round(2)
 ```
 ::::
-The **second figure** compares the distribution of **firm ages** by customer status using boxplots:
+The second figure compares the distribution of firm ages by customer status using boxplots:
 
-- Customers and non-customers appear to have **similar age distributions**, though customers are **slightly younger on average**.
+- Customers and non-customers appear to have similar age distributions, though customers are slightly younger on average.
 - Both groups contain a mix of newer and older firms, but non-customers show slightly more outliers on the higher end.
 
-These patterns imply that both **region** and **firm age** should be included as control variables in our regression models to better isolate the effect of Blueprinty software usage on patent output.The **second figure** compares the distribution of **firm ages** by customer status using boxplots:
+These patterns imply that both region and firm age should be included as control variables in our regression models to better isolate the effect of Blueprinty software usage on patent output.The second figure compares the distribution of firm ages by customer status using boxplots:
 
-- Customers and non-customers appear to have **similar age distributions**, though customers are **slightly younger on average**.
+- Customers and non-customers appear to have similar age distributions, though customers are slightly younger on average.
 - Both groups contain a mix of newer and older firms, but non-customers show slightly more outliers on the higher end.
 
-These patterns imply that both **region** and **firm age** should be included as control variables in our regression models to better isolate the effect of Blueprinty software usage on patent output.
+These patterns imply that both region and firm age should be included as control variables in our regression models to better isolate the effect of Blueprinty software usage on patent output.
 
 
 <!-- _todo: Compare regions and ages by customer status. What do you observe?_ -->
